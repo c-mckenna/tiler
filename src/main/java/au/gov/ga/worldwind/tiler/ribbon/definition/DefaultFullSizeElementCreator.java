@@ -1,0 +1,39 @@
+/*******************************************************************************
+ * Copyright 2012 Geoscience Australia
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+package au.gov.ga.worldwind.tiler.ribbon.definition;
+
+import au.gov.ga.worldwind.tiler.ribbon.RibbonTilingContext;
+
+public class DefaultFullSizeElementCreator extends LayerDefinitionElementCreatorBase
+{
+
+	@Override
+	public String getElementName()
+	{
+		return "FullSize";
+	}
+
+	@Override
+	public String getElementString(int level, RibbonTilingContext context)
+	{
+		StringBuffer result = new StringBuffer();
+		appendLine(result, level, "<FullSize>");
+		appendLine(result, level+1, "<Dimension width=\"" + context.getSourceImageSize().width + "\" height=\"" + context.getSourceImageSize().height + "\"/>");
+		appendLine(result, level, "</FullSize>");
+		return result.toString();
+	}
+
+}
